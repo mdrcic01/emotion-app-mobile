@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/burgundy"
     tools:context=".UserActivity">
 
     <Button
@@ -11,6 +12,8 @@
         android:layout_width="160dp"
         android:layout_height="60dp"
         android:text="Barbara"
+        android:backgroundTint="@color/oxblood"
+        android:textColor="@color/pink"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -23,6 +26,8 @@
         android:layout_width="160dp"
         android:layout_height="60dp"
         android:text="Martin"
+        android:backgroundTint="@color/oxblood"
+        android:textColor="@color/pink"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -37,6 +42,7 @@
         android:text="Pick a user!"
         android:textAlignment="center"
         android:textSize="34sp"
+        android:textColor="@color/pink"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

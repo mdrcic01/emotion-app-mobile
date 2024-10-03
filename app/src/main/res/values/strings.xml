@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">EmotionAlerting</string>
+
+    <string-array name="emotions">
+        <item>Happy</item>
+        <item>Sad</item>
+        <item>Angry</item>
+        <item>Horny</item>
+        <item>Missing you</item>
+    </string-array>
 </resources>

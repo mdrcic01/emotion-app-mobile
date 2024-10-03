@@ -1,7 +1,10 @@
 package com.example.emotionalerting;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,19 +23,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView happy;
-    private ImageView sad;
     private Button update;
     private TextView emotion;
 
-    private String baseUrl = "http://10.0.2.2:8080/message";
+    private String baseUrl = "https://martin-ubuntu-server.tail56ffbc.ts.net:8443/message";
     private String user = "Barbara";
     private String targetUser = "Martin";
 
     String url;
 
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -40,36 +44,36 @@ public class MainActivity extends AppCompatActivity {
         user = intent.getStringExtra("user");
         targetUser = intent.getStringExtra("targetUser");
 
-
         url = baseUrl + "?name=" + targetUser;
 
         RequestQueue queue = Volley.newRequestQueue(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        happy = findViewById(R.id.imageView);
-        sad = findViewById(R.id.imageView2);
+        Map<String, ImageView> emojis = new HashMap<>();
 
-        update = findViewById(R.id.button2);
-        emotion = findViewById(R.id.textView);
+        emojis.put("HAPPY", (ImageView) findViewById(R.id.happyButton));
+        emojis.put("HORNY", (ImageView) findViewById(R.id.hornyButton));
+        emojis.put("SAD", (ImageView) findViewById(R.id.sadButton));
+        emojis.put("ANGRY", (ImageView) findViewById(R.id.angryButton));
+        emojis.put("SLEEPY", (ImageView) findViewById(R.id.sleepyButton));
+        emojis.put("SICK", (ImageView) findViewById(R.id.sickButton));
+        emojis.put("ANNOYED", (ImageView) findViewById(R.id.annoyedButton));
+
+        update = findViewById(R.id.updateButton);
+        emotion = findViewById(R.id.emotionMessage);
 
         JsonObjectRequest request = createUpdateEmotionRequest();
         createUpdateListener(queue, request);
 
-        happy.setOnClickListener(view -> {
-            try {
-                queue.add(createPostEmotionRequest(user, "HAPPY"));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-
-        sad.setOnClickListener(view -> {
-            try {
-                queue.add(createPostEmotionRequest(user, "SAD"));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        emojis.forEach((emotionString, emotionView) -> {
+            emotionView.setOnClickListener(view -> {
+                try {
+                    queue.add(createPostEmotionRequest(user, emotionString));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
         });
     }
 

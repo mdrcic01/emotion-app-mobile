@@ -2,4 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="violet">#8E24AA</color>
+
+    <color name="burgundy">#800020</color>
+    <color name="oxblood">#260012</color>
+    <color name="dark_red">#3D001A</color>
+    <color name="blood">#53001E</color>
+    <color name="bright_blood">#690020</color>
+    <color name="pink_red">#C9304D</color>
+    <color name="pink">#EF7282</color>
+    <color name="bright_pink">#FDB4BA</color>
+    <color name="white_pink">#FFF2F2</color>
+
 </resources>
